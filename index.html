@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
+    <title>API VUEjs</title>
+</head>
+<body>
+    <div id="app">
+        <nav-menu></nav-menu><br>
+        
+        <h2 align="center">Programas</h2>
+        <hr>
+        <div class="container text-center">
+            <div class="row row-cols-2">
+            
+              <div class="col">
+                <table border="1" width="100%" class="table">
+                    <tr>
+                        <th>ID Programa</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th><button class="btn btn-success m-auto" v-on:click="activar(true, false, '')">Nuevo Programa</button></th>
+                    </tr>
+                    <tr v-for="item in datos">
+                        <td>{{item.codigo_programa}}</td>
+                        <td>{{item.nombre_programa}}</td>
+                        <td>{{item.descripcion_programa}}</td>
+                        <td>
+                            <button class="btn btn-primary m-auto" v-on:click="activar(false,true,item)">Editar</button>
+                            <button class="btn btn-danger ml-2" v-on:click="deletePrograma(item)">Eliminar</button>
+                        </td>
+                    </tr>
+                </table>                
+              </div>
+
+              <div class="col">
+                <div v-if="componen_edit===true">
+                    <div class="col-lg-10 m-auto card p-auto">
+                        <div class="card-body col-md-8 m-auto">
+                            <h2>Editar Programa</h2>
+                            <form v-on:submit.prevent="editPrograma">
+                                <label for="id">ID</label>
+                                <input type="text" name="id" class="form-control" v-model="program.codigo_programa" readonly="true">
+                                <label for="nombre_programa">Nombre del Programa</label>
+                                <input type="text" name="nombre_programa" class="form-control" v-model="program.nombre_programa">
+                                <label for="descripcion_programa">Descripción del Programa</label>
+                                <input type="text" name="descripcion_programa" class="form-control" v-model="program.descripcion_programa">
+                                <button class="btn btn-primary mt-3" type="submit">Actualizar</button>
+                            </form> 
+        
+                        </div>
+                    </div>
+                </div>
+                <div v-else-if="componen_new===true"><programas-new></programas-new></div>
+
+              </div>
+            
+            </div>
+        </div>
+
+    </div>
+ <script src="index.js"></script>   
+</body>
+</html>
