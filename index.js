@@ -56,7 +56,7 @@ var programas_new = {
     },
     methods : {
         createPrograma(){
-            axios.post(`http://api-academic-eb.eba-vdc8i6ut.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas`,{
+            axios.post(`http://api-academic-eb.eba-vdc8i6ut.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas/`,{
                 codigo_programa : this.newPrograma.codigo_programa,
                 nombre_programa : this.newPrograma.nombre_programa,
                 descripcion_programa : this.newPrograma.descripcion_programa,
@@ -107,7 +107,7 @@ var vm = new Vue({
     },
     methods: {
         listarProgramas(){
-            axios.get(`http://api-academic-eb.eba-vdc8i6ut.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas`)
+            axios.get(`http://api-academic-eb.eba-vdc8i6ut.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas/`)
             .then(
                 response => this.datos = response.data
             )
