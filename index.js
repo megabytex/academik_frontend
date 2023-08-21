@@ -56,7 +56,7 @@ var programas_new = {
     },
     methods : {
         createPrograma(){
-            axios.post(`http://api-academic-env.eba-znpgnfw6.us-east-2.elasticbeanstalk.com/gestionacademica/listar_programas/`,{
+            axios.post(`http://api-academic-env2.eba-fjrnsvgy.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas`,{
                 codigo_programa : this.newPrograma.codigo_programa,
                 nombre_programa : this.newPrograma.nombre_programa,
                 descripcion_programa : this.newPrograma.descripcion_programa,
@@ -107,7 +107,7 @@ var vm = new Vue({
     },
     methods: {
         listarProgramas(){
-            axios.get(`http://api-academic-env.eba-znpgnfw6.us-east-2.elasticbeanstalk.com/listar_programas/`)
+            axios.get(`http://api-academic-env2.eba-fjrnsvgy.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas`)
             .then(
                 response => this.datos = response.data
             )
@@ -123,7 +123,7 @@ var vm = new Vue({
             this.program.descripcion_programa = datosPrograma.descripcion_programa
         },
         editPrograma(){
-           axios.put(`http://api-academic-env.eba-znpgnfw6.us-east-2.elasticbeanstalk.com/gestionacademica/detalles_programa/${this.program.codigo_programa}`,{
+           axios.put(`http://api-academic-env2.eba-fjrnsvgy.us-west-2.elasticbeanstalk.com/gestionacademica/detalles_programa/${this.program.codigo_programa}`,{
                 codigo_programa : this.program.codigo_programa,
                 nombre_programa : this.program.nombre_programa,
                 descripcion_programa : this.program.descripcion_programa                
@@ -139,7 +139,7 @@ var vm = new Vue({
         deletePrograma(datosPrograma){
            var confirmacion = confirm("¿Estas seguro que deseas eliminar el programa "+datosPrograma.nombre_programa+"?");
            if(confirmacion){
-                axios.delete(`http://api-academic-env.eba-znpgnfw6.us-east-2.elasticbeanstalk.com/gestionacademica/detalles_programa/${datosPrograma.codigo_programa}`)
+                axios.delete(`http://api-academic-env2.eba-fjrnsvgy.us-west-2.elasticbeanstalk.com/gestionacademica/detalles_programa/${datosPrograma.codigo_programa}`)
                 .then(reponse => {
                     this.listarProgramas();
                 })
