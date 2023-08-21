@@ -107,7 +107,7 @@ var vm = new Vue({
     },
     methods: {
         listarProgramas(){
-            axios.get(`http://api-academic-env2.eba-fjrnsvgy.us-west-2.elasticbeanstalk.com/listar_programas/`)
+            axios.get(`http://api-academic-env2.eba-fjrnsvgy.us-west-2.elasticbeanstalk.com/gestionacademica/listar_programas/`)
             .then(
                 response => this.datos = response.data
             )
